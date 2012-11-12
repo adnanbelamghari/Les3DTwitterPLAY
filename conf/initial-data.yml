@@ -1,0 +1,11 @@
+
+
+#creationComptes:
+#  - !!models.creationCompte
+#        id:       1
+#        label:     Tache de base
+#        priority: 0
+#        project:    !!models.Project
+#                        id: 1
+#        user:    !!models.UserAccount
+#                        id: 1

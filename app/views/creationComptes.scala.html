@@ -1,0 +1,50 @@
+@(creationComptes: List[creationCompte], creationCompteForm: Form[creationCompte])
+
+@import helper._
+
+@main("See All creationComptes") {
+    
+ <h1>@creationComptes.size() creationCompte(s)</h1>
+Bonjour : @session.get("nickname")
+    <ul>
+        @for(creationCompte <- creationComptes) {
+            <li>
+                @creationCompte.getLabel priority : @creationCompte.getPriority person : @creationCompte.getUser.getNickname 
+                @if(creationCompte.getProject != null){
+                	project : @creationCompte.getProject.getLabel
+                }
+                
+                
+                @form(routes.Application.deletecreationCompte(creationCompte.getId)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+    
+    <h2>Add a new task</h2>
+    
+    @form(routes.Application.creationCompte()) {
+        
+        @inputText(creationCompteForm("label"), '_label -> "Nom de la tâche")
+        @inputText(creationCompteForm("priority"))
+        Project :
+        @select(creationCompteForm("project.id"), 
+        		options(Project.options()),
+        		'_default -> "--- Choose a project ---",
+                '_label -> "Project",
+                '_error -> taskForm("project").error.map(_.withMessage("Please select your project"))
+        		)
+  
+        User : 
+        @select(creationCompteForm("user.id"), 
+        		options(UserAccount.options()),
+        		'_default -> "--- Choose a user ---",
+                '_label -> "User",
+                '_error -> creationCompteForm("user").error.map(_.withMessage("Please select your userAccount"))
+        		)
+        <input type="submit" value="Create">
+        
+    }   
+    
+}
