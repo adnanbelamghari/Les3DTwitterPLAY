@@ -1,3 +1,5 @@
+/*code definissant la table useraccount*/
+
 package models;
 
 import java.util.LinkedHashMap;
