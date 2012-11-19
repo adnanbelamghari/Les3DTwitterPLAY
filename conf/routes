@@ -5,12 +5,12 @@
 # Home page
 GET     /                           controllers.Application.index()
 
-# Map static resources from the /public folder to the /assets URL path
-#GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
-#response NEGOCIATION DE CONTENU
 
 
 # CreationComptes          
 GET     /creationComptes                  controllers.Application.creationComptes()
-POST    /creationComptes                  controllers.Application.newCreationComptes()
+POST    /creationComptes                  controllers.Application.newCreationCompte()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -101,9 +101,9 @@ public class UserAccount extends Model
 		return find.where().eq("nickname", nickname).findUnique();
 	}
 
-    /**
-     * Authenticate a User.
-     */
+		/**
+		 * Authenticate a User.
+		 */
     public static UserAccount authenticateMail(String email, String password) {
         return find.where()
             .eq("mail", email)
@@ -111,9 +111,9 @@ public class UserAccount extends Model
             .findUnique();
     }
 
-/**
-     * Authenticate a User.
-     */
+    	/**
+    	 * Authenticate a User.
+    	 */
     public static UserAccount authenticateNickname(String nickname, String password) {
         return find.where()
             .eq("nickname", nickname)
